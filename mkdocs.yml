@@ -1,0 +1,23 @@
+site_name: "aurae.io"
+site_url: ""
+repo_url: "https://github.com/aurae-runtime/aurae.io"
+edit_url: "#root/docs/"
+
+nav:
+  - Home: index.md
+
+theme:
+  name: material
+  language: en
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - pymdownx.highlight
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
