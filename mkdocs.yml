@@ -8,6 +8,8 @@ nav:
 theme:
   name: material
   language: en
+  palette:
+    scheme: slate
 
 markdown_extensions:
   - admonition
