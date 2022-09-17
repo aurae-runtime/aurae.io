@@ -4,6 +4,14 @@ repo_url: "https://github.com/aurae-runtime/aurae"
 
 nav:
   - Home: index.md
+  - Whitepaper: https://docs.google.com/document/d/1dA591eipsgWeAlaSwbYNQtAQaES243IIqXPAfKhJSjU/edit#
+  - Aurae: https://github.com/aurae-runtime/aurae
+  - Auraed: https://github.com/aurae-runtime/auraed
+  - API: https://github.com/aurae-runtime/api
+  - Scripts: https://github.com/aurae-runtime/scripts
+
+
+
 
 theme:
   name: material
