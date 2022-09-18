@@ -1,20 +1,39 @@
 Aurae Runtime
 ========
 
-Aurae is a low level distributed runtime system built for application and platform teams to build on top of.
+Aurae is a low level distributed runtime system built for application and platform teams to run and manage multi tenant workloads.
 
-## Replacing Systemd
+Read the motivation: [Why fix Kubernetes and Systemd?](https://medium.com/@kris-nova/why-fix-kubernetes-and-systemd-782840e50104)
 
-Aurae aims to be a simplified alternative to [systemd](https://www.freedesktop.org/wiki/Software/systemd/) and the Kubernetes [kubelet](https://github.com/kubernetes/kubelet).
+Contribute to the original architecture: [Open Access Whitepaper](https://docs.google.com/document/d/1dA591eipsgWeAlaSwbYNQtAQaES243IIqXPAfKhJSjU/edit#)
 
-## MicroVMs and Containers
+## Multi Tenant Nodes
 
-Aurae aims to unify microVMs, and container runtimes into a single simplified binary that runs on a host as a new pid 1.
+Aurae aims to be a simplified alternative to many of the features in [systemd](https://www.freedesktop.org/wiki/Software/systemd/). Aurae also goes after the scope of the kubernetes [kubelet](https://github.com/kubernetes/kubelet) in the hopes of building a multi tenant node daemon.
 
-## Security Focused
+Namespaces run in VMs Aurae serves as the hypervisor. Aurae will manage the VM metadata on a single machine.
 
-Aurae brings mTLS and strong identity to the lowest layer of the stack possible.
-Schedule host daemons using the same mechanics you use to schedule pods.
+Aurae wants to pursue multi tenant semantics in distributed systems such as Kubernetes. Aurae accomplishes this by running namespace workloads directly in lightweight virtual machines for an additional layer of isolation.
+
+## Aurae and Container Runtimes
+
+Aurae will schedule lightweight containers without the need to manage an additional container runtime. Just install Aurae and begin running OCI container images.
+
+## Aura Language 
+
+Aurae offers an alternative to Kubernetes YAML by baking in a Turing complete interpretted language specifically for interfacing with the backend daemon. 
+
+```typescript
+#!/usr/bin/env aurae
+
+// Connect and authenticate with a local Daemon
+let aurae = connect();
+aurae.info();
+
+// Get the status of the daemon
+let observe = aurae.obsever()
+observe.status()
+```
 
 ## Get Involved 
 
