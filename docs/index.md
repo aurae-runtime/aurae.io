@@ -19,7 +19,7 @@ Aurae wants to pursue multi tenant semantics in distributed systems such as Kube
 
 Aurae will schedule lightweight containers without the need to manage an additional container runtime. Just install Aurae and begin running OCI container images.
 
-## Aura Language 
+## Aurae Language 
 
 Aurae offers an alternative to Kubernetes YAML by baking in a Turing complete interpretted language specifically for interfacing with the backend daemon. 
 
