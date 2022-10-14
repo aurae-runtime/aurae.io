@@ -1,5 +1,5 @@
 site_name: "Aurae Runtime"
-site_url: ""
+site_url: "https://aurae.io"
 repo_url: "https://github.com/aurae-runtime/aurae"
 
 nav:
@@ -16,6 +16,8 @@ theme:
   language: en
   palette:
     scheme: slate
+    primary: deep purple
+    accent: yellow
 
 markdown_extensions:
   - admonition
