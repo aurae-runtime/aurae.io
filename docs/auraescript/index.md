@@ -1,57 +1,62 @@
 # AuraeScript
 
- - Runtime
-    - Executing Commands 
+AuraeScript is a turing complete language for platform teams built on [Rhai](https://rhai.rs/book/) and is similar to TypeScript and Rust.
 
+```typescript
 
-### Connecting to an `auraed` socket. 
+let connect = true;
 
-By default AuraeScript will look for a `config` file that matches the following syntax or the [default.config.toml](https://github.com/aurae-runtime/auraescript/blob/main/default.config.toml). 
+if connect {
+    let aurae = connect();
+    aurae.info().json();
+}
 
-```toml
-# Client Cert Material
-[auth]
-ca_crt = "~/.aurae/pki/ca.crt"
-client_crt = "~/.aurae/pki/_signed.client.nova.crt"
-client_key = "~/.aurae/pki/client.nova.key"
-
-# System Configuration
-[system]
-socket = "/var/run/aurae/aurae.sock"
 ```
 
-In order of priority the following locations will be checked by default for a `config` file.
+AuraeScript is a lightweight client that wraps the [Aurae Standard Library](https://github.com/aurae-runtime/api/blob/main/README.md#the-aurae-standard-library). 
 
- - ${HOME}/.aura/config
- - /etc/aurae/config
- - /var/lib/aurae/config
+AuraeScript is a quick way to access the core Aurae APIs and follows normal UNIX parlance. AuraeScript should feel simple and intuitive for any Go, C, Python, or Rust programmer.
 
-After your filesystem is set up with valid mTLS material you can run the following script to validate you are authenticating with the system.
-
-```TypeScript
+```typescript
 #!/usr/bin/env auraescript
-// info.aurae
 
-let aurae = connect();
-aurae.info().json();
+let client = connect(); // Connect and authenticate with mTLS stored in a ~/.aurae/config
+client.info().json();   // Print the connection details as JSON
+
+
+let observe = client.observe() // Initialize the observe subsystem
+observe.status().json();      // Print the status of an Aurae system to JSON
 ```
 
-Which can be ran directly with your normal user privileges. 
+## Build From Source
+
+⚠️ Early Active Development ⚠️
+
+We suggest building the project from the higher order [environment](https://github.com/aurae-runtime/environment) repository.
+
+```
+git clone git@github.com:aurae-runtime/environment.git
+cd environment
+make submodules pki config all
+```
+
+Alternatively it is possible to build `aurascript` by itself. Check out this repository and use the Makefile.
 
 ```bash
-chmod +x info.aurae
-./info.aurae
+make
 ```
 
-All of the output with Aurae can be displayed as valid JSON.
+...or manually using Cargo. 
 
-```json
-{
-  "subject_common_name": "nova.unsafe.aurae.io",
-  "issuer_common_name": "unsafe.aurae.io",
-  "sha256_fingerprint": "SHA256:7afa7cbf54dacf8368fd7407039594264c5bb22eaa7f8de5017af53f5ab240b0",
-  "key_algorithm": "RSA"
-}
+```bash
+cargo build 
+cargo install --path .
 ```
+
+### Architecture 
+
+AuraeScript follows a similar client paradigm to Kubernetes `kubectl` command. However, unlike Kubernetes this is not a command line tool like `kubectl`. AuraeScript is a fully supported programing language complete with a systems standard library. The Aurae runtime projects supports many clients, and the easiest client to get started building with is AuraeScript.
+
+Download the static binary directly to your system, and you can begin writing AuraeScript programs directly against a running Aurae server.
 
 

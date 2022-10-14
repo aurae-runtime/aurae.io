@@ -1,57 +1,42 @@
-# AuraeScript
+# Aurae
 
- - Runtime
-    - Executing Commands 
+A multi-tenant runtime daemon written in Rust.
 
+ - [X] Pid 1 init system replaces systemd
+ - [X] SPIFFE/SPIRE mTLS backed gRPC API over unix domain socket and network devices
+ - [X] Run executables
+ - [ ] Run containers
+ - [ ] Run instances (virtualization hypervisor using Firecracker)
+ - [ ] Schedule workloads
+ - [ ] Stream routing for `stdout` and `stderr`
+ - [ ] TTY Attaching for `stdin` to processes
+ - [ ] Mapping network devices
+ - [ ] Stream routing for kernel logs
+ - [ ] Streaming routing for syslog
+ - [ ] Stream routing for kernel events
+ - [ ] Native eBPF support
+ - [X] Built on Rust [libc](https://github.com/rust-lang/libc) (Apache 2.0 replacement for glibc)
 
-### Connecting to an `auraed` socket. 
+## Building from source
 
-By default AuraeScript will look for a `config` file that matches the following syntax or the [default.config.toml](https://github.com/aurae-runtime/auraescript/blob/main/default.config.toml). 
-
-```toml
-# Client Cert Material
-[auth]
-ca_crt = "~/.aurae/pki/ca.crt"
-client_crt = "~/.aurae/pki/_signed.client.nova.crt"
-client_key = "~/.aurae/pki/client.nova.key"
-
-# System Configuration
-[system]
-socket = "/var/run/aurae/aurae.sock"
-```
-
-In order of priority the following locations will be checked by default for a `config` file.
-
- - ${HOME}/.aura/config
- - /etc/aurae/config
- - /var/lib/aurae/config
-
-After your filesystem is set up with valid mTLS material you can run the following script to validate you are authenticating with the system.
-
-```TypeScript
-#!/usr/bin/env auraescript
-// info.aurae
-
-let aurae = connect();
-aurae.info().json();
-```
-
-Which can be ran directly with your normal user privileges. 
+We suggest using the [environment](https://github.com/aurae-runtime/environment) repository for building.
 
 ```bash
-chmod +x info.aurae
-./info.aurae
+make auraed
 ```
 
-All of the output with Aurae can be displayed as valid JSON.
+Otherwise you can check out this repository and leverage the Makefile in this repository.
 
-```json
-{
-  "subject_common_name": "nova.unsafe.aurae.io",
-  "issuer_common_name": "unsafe.aurae.io",
-  "sha256_fingerprint": "SHA256:7afa7cbf54dacf8368fd7407039594264c5bb22eaa7f8de5017af53f5ab240b0",
-  "key_algorithm": "RSA"
-}
+
+```bash
+make install
+```
+
+or using Cargo directly
+
+```bash
+cargo clippy
+cargo install --debug --path .
 ```
 
 

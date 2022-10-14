@@ -4,9 +4,12 @@ repo_url: "https://github.com/aurae-runtime/aurae"
 
 nav:
   - Home: index.md
-  - Whitepaper: https://docs.google.com/document/d/1dA591eipsgWeAlaSwbYNQtAQaES243IIqXPAfKhJSjU/edit#
-  - AuraeScript: /auraescript
   - Auraed: /auraed
+  - AuraeScript: /auraescript
+  - Aurae Standard Library: /stdlib
+  - Building from Source: /build
+  - Quick Start: /quickstart
+  - Certificates: /certs
 
 theme:
   name: material
