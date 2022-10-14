@@ -21,7 +21,7 @@ Aurae will schedule lightweight containers without the need to manage an additio
 
 ## Aurae Language 
 
-Aurae offers an alternative to Kubernetes YAML by baking in a Turing complete interpretted language specifically for interfacing with the backend daemon. 
+Aurae offers an alternative to Kubernetes YAML by baking in a Turing complete interpreted language specifically for interfacing with the backend daemon. 
 
 ```typescript
 #!/usr/bin/env auraed
