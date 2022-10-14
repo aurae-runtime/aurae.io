@@ -24,7 +24,7 @@ Aurae will schedule lightweight containers without the need to manage an additio
 Aurae offers an alternative to Kubernetes YAML by baking in a Turing complete interpretted language specifically for interfacing with the backend daemon. 
 
 ```typescript
-#!/usr/bin/env aurae
+#!/usr/bin/env auraed
 
 // Connect and authenticate with a local Daemon
 let aurae = connect();
