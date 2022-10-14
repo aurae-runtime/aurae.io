@@ -2,6 +2,16 @@
 
 The main static website for [aurae.io](https://aurae.io).
 
+### Do Not Edit These Docs
+
+Do not edit documentation in this repository. Instead, find the corresponding `/docs` folder in each repository you intend on adding documentation to.
+
+For example if you intend on editing a file for the [auraed](https://github.com/aurae-runtime/auraed) project find the [auraed/docs](https://github.com/aurae-runtime/auraed/tree/main/docs) directory and open a pull request against that specific project.
+
+The maintainers of each project will review your change.
+
+Additionally there is a top level set of documentation in the [main aurae repository](https://github.com/aurae-runtime/aurae/tree/main/docs).
+
 ### About
 
 The website is built using
