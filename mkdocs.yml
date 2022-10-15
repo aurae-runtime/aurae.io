@@ -6,7 +6,9 @@ nav:
   - Home: index.md
   - Auraed: /auraed
   - AuraeScript: /auraescript
-  - Aurae Standard Library: /stdlib
+  - Aurae Standard Library:
+    - Specification: /stdlib
+    - V0: /stdlib/v0
   - Building from Source: /build
   - Quick Start: /quickstart
   - Certificates: /certs
